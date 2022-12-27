@@ -36,7 +36,7 @@ serde = "1.0.152"
 
 [features]
 default = []
-aws = ["dep:aws-config", "dep:aws-sdk-s3", "dep:aws-sdk-sqs"]
+aws = ["dep:aws-config", "dep:aws-sdk-s3", "dep:aws-sdk-sqs", "dep:serde_json"]
 http = ["dep:reqwest", "dep:reqwest-retry", "dep:reqwest-middleware", "dep:reqwest-tracing"]
 types = ["dep:serde_json"]
 rocket = ["dep:rocket"]
