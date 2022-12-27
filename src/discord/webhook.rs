@@ -1,17 +1,8 @@
+use crate::types::discord::DiscordWebhookMessage;
 use http::header::CONTENT_TYPE;
 use reqwest::Response;
 use reqwest_middleware::ClientWithMiddleware;
-use serde::Serialize;
 use twilight_model::channel::message::Embed;
-
-#[derive(Serialize, Debug, Default)]
-pub struct DiscordWebhookMessage {
-    content: Option<String>,
-    username: Option<String>,
-    avatar_url: Option<String>,
-    tts: bool,
-    embeds: Vec<Embed>,
-}
 
 impl DiscordWebhookMessage {
     pub fn new(username: String, avatar_url: String) -> Self {
