@@ -17,26 +17,6 @@ jobs:
         with:
           toolchain: stable
           override: true
-
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/.cargo/registry
-            ~/.cargo/git
-            target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-
-      - name: cargo build
-        run: cargo build --all-features
-
-  build-all-feature-combinations:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: actions-rs/toolchain@v1
-        with:
-          toolchain: stable
-          override: true
       - uses: actions/cache@v2
         with:
           path: |
