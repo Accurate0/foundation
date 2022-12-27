@@ -1,4 +1,4 @@
-use anyhow::Context;
+use anyhow::{bail, Context};
 
 pub async fn send_to_queue<T>(
     client: &aws_sdk_sqs::Client,
@@ -13,7 +13,7 @@ where
     if let Some(queue_url) = queue_url_output.queue_url() {
         send_to_queue_by_url(client, queue_url, message).await?;
     } else {
-        log::error!("missing queue url for {}", queue_name);
+        bail!("missing queue url for {}", queue_name);
     }
 
     Ok(())
