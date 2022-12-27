@@ -19,11 +19,18 @@ where
         std::any::type_name::<T>()
     );
 
-    let resp = client.get_object().bucket(bucket).key(file).send().await?;
-    let bytes = resp.body.collect().await?;
+    let resp = client
+        .get_object()
+        .bucket(bucket)
+        .key(file)
+        .send()
+        .await?
+        .body
+        .collect()
+        .await?;
 
     let config = Config::builder().add_source(config::File::from_str(
-        std::str::from_utf8(&bytes.into_bytes())?,
+        std::str::from_utf8(&resp.into_bytes())?,
         format,
     ));
 
