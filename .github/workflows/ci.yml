@@ -29,33 +29,22 @@ jobs:
       - name: cargo build
         run: cargo build --all-features
 
-  build-features:
+  build-all-feature-combinations:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: true
-      matrix:
-        feature:
-          - default
-          - discord
-          - types
-          - http
-          - aws
-          - rocket
-
     steps:
       - uses: actions/checkout@v2
       - uses: actions-rs/toolchain@v1
         with:
           toolchain: stable
           override: true
-
       - uses: actions/cache@v2
         with:
           path: |
             ~/.cargo/registry
             ~/.cargo/git
             target
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}-${{ matrix.feature }}
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+      - uses: taiki-e/install-action@cargo-hack
 
       - name: cargo build
-        run: cargo build --features ${{ matrix.feature }}
+        run: cargo hack check --feature-powerset --no-dev-deps
