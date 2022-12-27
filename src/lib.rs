@@ -1,5 +1,6 @@
 #[cfg(feature = "aws")]
 pub mod aws;
+#[cfg(feature = "config")]
 pub mod config;
 pub mod constants;
 #[cfg(feature = "discord")]
