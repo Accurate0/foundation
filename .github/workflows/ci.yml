@@ -9,7 +9,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  build-all:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -20,3 +20,26 @@ jobs:
 
       - name: cargo build
         run: cargo build --all-features
+
+  build-features:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: true
+      matrix:
+        feature:
+          - default
+          - discord
+          - types
+          - http
+          - aws
+          - rocket
+
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          override: true
+
+      - name: cargo build
+        run: cargo build --features ${{ matrix.feature }}
