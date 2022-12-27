@@ -6,7 +6,7 @@ pub async fn load_config_from_s3<T>(
     format: config::FileFormat,
 ) -> Result<T, anyhow::Error>
 where
-    T: serde::de::Deserialize<'static>,
+    T: serde::de::DeserializeOwned,
 {
     use config::Config;
     let file = file.to_string();
