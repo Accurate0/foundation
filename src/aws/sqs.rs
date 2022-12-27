@@ -30,11 +30,7 @@ where
     let resp = client
         .send_message()
         .queue_url(queue_url)
-        .message_body(
-            serde_json::to_string(&message)
-                .context("must serialize")
-                .unwrap(),
-        )
+        .message_body(serde_json::to_string(&message).context("must serialize")?)
         .send()
         .await?;
     log::info!("added to queue: {:?}", resp);
