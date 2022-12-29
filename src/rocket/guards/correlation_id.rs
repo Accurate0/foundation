@@ -13,10 +13,11 @@ impl<'r> FromRequest<'r> for CorrelationId {
     type Error = Infallible;
 
     async fn from_request(request: &'r Request<'_>) -> request::Outcome<Self, Self::Error> {
-        let auth = request.headers().get_one(CORRELATION_ID_HEADER);
-        Outcome::Success(Self(match auth {
-            Some(s) => s.to_string(),
-            None => get_uuid(),
-        }))
+        let correlation_id = request
+            .headers()
+            .get_one(CORRELATION_ID_HEADER)
+            .map_or_else(get_uuid, |s| s.to_owned());
+
+        Outcome::Success(Self(correlation_id))
     }
 }
