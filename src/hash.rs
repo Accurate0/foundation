@@ -21,5 +21,8 @@ where
 pub fn get_short_sha1(key: &str) -> String {
     let mut hasher = SHA1_HASHER.lock().unwrap();
     hasher.input_str(key);
-    hasher.result_str()[..6].to_owned()
+    let output = hasher.result_str()[..6].to_owned();
+    hasher.reset();
+
+    output
 }
