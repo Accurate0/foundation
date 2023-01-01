@@ -1,9 +1,9 @@
 mod header_map;
-#[cfg(feature = "jwt")]
-mod jwt;
 mod request;
+#[cfg(feature = "jwt")]
+mod verify_jwt;
 
 pub use header_map::HeaderMapExtensions;
-#[cfg(feature = "jwt")]
-pub use jwt::AliriOAuth2Extensions;
 pub use request::RequestExtensions;
+#[cfg(feature = "jwt")]
+pub use verify_jwt::AliriOAuth2Extensions;
