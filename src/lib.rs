@@ -8,6 +8,8 @@ pub mod extensions;
 pub mod hash;
 #[cfg(feature = "http")]
 pub mod http;
+#[cfg(feature = "jwt")]
+pub mod jwt;
 pub mod log;
 #[cfg(feature = "rocket")]
 pub mod rocket;
