@@ -12,6 +12,16 @@ pub enum UserRole {
     None,
 }
 
+impl UserRole {
+    pub fn is_allowed_protected_access(&self) -> bool {
+        matches!(self, UserRole::Admin | UserRole::Privileged)
+    }
+
+    pub fn is_admin(&self) -> bool {
+        matches!(self, UserRole::Admin)
+    }
+}
+
 #[derive(Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct JwtClaim {
