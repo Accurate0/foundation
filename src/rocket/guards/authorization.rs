@@ -51,7 +51,7 @@ impl<'r> FromRequest<'r> for RequiredAuthorizationHeader {
                         match jwt {
                             Ok(jwt) => {
                                 log::info!(
-                                    "no authority found, unverified jwt for  {}",
+                                    "no authority found, unverified jwt for {}",
                                     jwt.claims().oid
                                 );
                                 Outcome::Success(Self {
