@@ -1,3 +1,4 @@
+use super::jwt::UserRole;
 use serde::Deserialize;
 use serde::Serialize;
 use serde_json::Value;
@@ -16,7 +17,7 @@ pub struct User {
     pub display_name: String,
     pub given_name: Option<String>,
     pub surname: Option<String>,
-    #[serde(rename = "extension_0bc691a1eb4c42f49cdf50357f8505b3_Role")]
-    pub extension_role: Option<String>,
+    #[serde(rename = "extension_0bc691a1eb4c42f49cdf50357f8505b3_Role", default)]
+    pub extension_role: UserRole,
     pub id: String,
 }
