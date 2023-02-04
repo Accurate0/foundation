@@ -17,6 +17,6 @@ pub struct User {
     pub given_name: Option<String>,
     pub surname: Option<String>,
     #[serde(rename = "extension_0bc691a1eb4c42f49cdf50357f8505b3_Role")]
-    pub extension_role: String,
+    pub extension_role: Option<String>,
     pub id: String,
 }
