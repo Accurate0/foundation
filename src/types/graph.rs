@@ -13,15 +13,10 @@ pub struct GetUsersResponse {
 #[derive(Default, Debug, Clone, PartialEq, Eq, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct User {
-    pub business_phones: Vec<Value>,
     pub display_name: String,
     pub given_name: Option<String>,
-    pub job_title: Value,
-    pub mail: Value,
-    pub mobile_phone: Value,
-    pub office_location: Value,
-    pub preferred_language: Value,
     pub surname: Option<String>,
-    pub user_principal_name: String,
+    #[serde(rename = "extension_0bc691a1eb4c42f49cdf50357f8505b3_Role")]
+    pub extension_role: String,
     pub id: String,
 }
