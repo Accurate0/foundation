@@ -1,4 +1,3 @@
-#[cfg(feature = "aws")]
 pub async fn load_config_from_s3<T>(
     client: &aws_sdk_s3::Client,
     bucket: impl ToString,

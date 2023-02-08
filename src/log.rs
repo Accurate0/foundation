@@ -12,7 +12,6 @@ pub fn init_logger() {
         })
         .level(log::LevelFilter::Info);
 
-    #[cfg(feature = "aws")]
     let cfg = {
         cfg.level_for(
             "aws_smithy_http_tower::parse_response",
