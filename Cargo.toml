@@ -23,7 +23,7 @@ serde_json = { version = "1.0.91"  }
 rocket = { version = "0.5.0-rc.2"  }
 
 # discord
-twilight-model = { version = "0.14.0"  }
+twilight-model = { version = "0.15.0"  }
 mime = { version = "0.3.16"  }
 
 # jwt
