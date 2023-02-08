@@ -8,7 +8,7 @@ publish  = false
 # aws
 aws-config = { version = "0.52.0"  }
 aws-sdk-s3 = { version = "0.22.0"  }
-aws-sdk-sqs = { version = "0.22.0"  }
+aws-sdk-sqs = { version = "0.24.0"  }
 
 # http
 reqwest = { version  = "0.11.13"  }
