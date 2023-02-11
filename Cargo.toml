@@ -6,24 +6,24 @@ publish  = false
 
 [dependencies]
 # aws
-aws-config = { version = "0.52.0"  }
-aws-sdk-s3 = { version = "0.22.0"  }
-aws-sdk-sqs = { version = "0.22.0"  }
+aws-config = { version = "0.54.1"  }
+aws-sdk-s3 = { version = "0.24.0"  }
+aws-sdk-sqs = { version = "0.24.0"  }
 
 # http
-reqwest = { version  = "0.11.13"  }
+reqwest = { version  = "0.11.14"  }
 reqwest-retry = { version  = "0.2.1"  }
 reqwest-middleware = { version  = "0.2.0"  }
 reqwest-tracing = { version  = "0.4.0"  }
 
 # types
-serde_json = { version = "1.0.91"  }
+serde_json = { version = "1.0.93"  }
 
 # rocket
 rocket = { version = "0.5.0-rc.2"  }
 
 # discord
-twilight-model = { version = "0.14.0"  }
+twilight-model = { version = "0.15.0"  }
 mime = { version = "0.3.16"  }
 
 # jwt
@@ -34,8 +34,8 @@ jwt = "0.16.0"
 
 rust-crypto = "0.2.36"
 lazy_static = "1.4.0"
-uuid = { version = "1.2.2", features = ["v4"] }
-anyhow = "1.0.68"
+uuid = { version = "1.3.0", features = ["v4"] }
+anyhow = "1.0.69"
 http = "0.2.8"
 log = "0.4.17"
 fern = "0.6.1"
