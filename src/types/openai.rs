@@ -45,6 +45,8 @@ pub struct Usage {
 pub struct OpenAIChatCompletionRequest {
     pub model: String,
     pub messages: Vec<ChatMessage>,
+    #[serde(rename = "max_tokens")]
+    pub max_tokens: i64,
 }
 
 #[derive(Default, Debug, Clone, Serialize, Deserialize)]
