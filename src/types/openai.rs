@@ -39,3 +39,36 @@ pub struct Usage {
     #[serde(rename = "total_tokens")]
     pub total_tokens: i64,
 }
+
+#[derive(Default, Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct OpenAIChatCompletionRequest {
+    pub model: String,
+    pub messages: Vec<ChatMessage>,
+}
+
+#[derive(Default, Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ChatMessage {
+    pub role: String,
+    pub content: String,
+}
+
+#[derive(Default, Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct OpenAIChatCompletionResponse {
+    pub id: String,
+    pub object: String,
+    pub created: i64,
+    pub choices: Vec<ChatChoice>,
+    pub usage: Usage,
+}
+
+#[derive(Default, Debug, Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct ChatChoice {
+    pub index: i64,
+    pub message: ChatMessage,
+    #[serde(rename = "finish_reason")]
+    pub finish_reason: String,
+}
