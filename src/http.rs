@@ -53,9 +53,10 @@ where
 
 pub fn get_http_client_with_headers(
     headers: http::HeaderMap,
+    timeout: u64,
 ) -> reqwest_middleware::ClientWithMiddleware {
     let client = reqwest::ClientBuilder::new()
-        .timeout(Duration::from_secs(10))
+        .timeout(Duration::from_secs(timeout))
         .default_headers(headers)
         .build()
         .context("Failed to build http client")
