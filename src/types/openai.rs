@@ -72,5 +72,5 @@ pub struct ChatChoice {
     pub index: i64,
     pub message: ChatMessage,
     #[serde(rename = "finish_reason")]
-    pub finish_reason: String,
+    pub finish_reason: Option<String>,
 }
