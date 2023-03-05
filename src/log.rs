@@ -1,7 +1,7 @@
 use anyhow::Context;
 use log::LevelFilter;
 
-pub fn init_logger(level: LevelFilter) {
+pub fn init_logger(level: LevelFilter, modules: Vec<String>) {
     let cfg = fern::Dispatch::new()
         .format(|out, message, record| {
             out.finish(format_args!(
@@ -14,14 +14,22 @@ pub fn init_logger(level: LevelFilter) {
         .level(level);
 
     let cfg = {
-        cfg.level_for(
-            "aws_smithy_http_tower::parse_response",
-            log::LevelFilter::Warn,
-        )
-        .level_for(
-            "aws_config::default_provider::credentials",
-            log::LevelFilter::Warn,
-        )
+        let cfg = cfg
+            .level_for(
+                "aws_smithy_http_tower::parse_response",
+                log::LevelFilter::Warn,
+            )
+            .level_for(
+                "aws_config::default_provider::credentials",
+                log::LevelFilter::Warn,
+            );
+
+        let mut cfg = cfg;
+        for module in modules {
+            cfg = cfg.level_for(module, log::LevelFilter::Warn);
+        }
+
+        cfg
     };
 
     cfg.chain(std::io::stdout())
