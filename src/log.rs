@@ -1,7 +1,7 @@
 use anyhow::Context;
 use log::LevelFilter;
 
-pub fn init_logger(level: LevelFilter, modules: Vec<String>) {
+pub fn init_logger(level: LevelFilter, modules: Vec<&'static str>) {
     let cfg = fern::Dispatch::new()
         .format(|out, message, record| {
             out.finish(format_args!(
