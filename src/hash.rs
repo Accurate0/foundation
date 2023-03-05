@@ -26,3 +26,12 @@ pub fn get_short_sha1(key: &str) -> String {
 
     output
 }
+
+pub fn get_sha1(key: &str) -> String {
+    let mut hasher = SHA1_HASHER.lock().unwrap();
+    hasher.input_str(key);
+    let output = hasher.result_str().to_owned();
+    hasher.reset();
+
+    output
+}
